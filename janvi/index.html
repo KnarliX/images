@@ -3,26 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Redirect</title>
+    <title>Random Redirect Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        h1 {
+            color: #007BFF;
         }
         a {
-            display: block;
+            display: inline-block;
             margin: 10px 0;
             text-decoration: none;
             color: #007BFF;
+            padding: 10px 20px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
         }
         a:hover {
-            text-decoration: underline;
+            background-color: #007BFF;
+            color: white;
+        }
+        #countdown {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #FF4500;
+        }
+        #message {
+            font-size: 18px;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Random Redirect Page</h1>
+    <h1>Welcome to the Random Redirect Page</h1>
+    <p id="message">You will be redirected to a random page in <span id="countdown">3</span> seconds.</p>
     <p>If you are not redirected automatically, please choose one of the links below:</p>
     <div id="links"></div>
 
@@ -38,10 +58,17 @@
         const randomIndex = Math.floor(Math.random() * urls.length);
         const selectedUrl = urls[randomIndex];
 
-        // Redirect after 3 seconds
-        setTimeout(() => {
-            window.location.href = selectedUrl;
-        }, 3000);
+        // Countdown timer
+        let countdown = 3;
+        const countdownElement = document.getElementById('countdown');
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            countdownElement.innerText = countdown;
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = selectedUrl;
+            }
+        }, 1000);
 
         // Display links
         const linksDiv = document.getElementById('links');
