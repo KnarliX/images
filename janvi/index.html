@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect</title>
+    <title>Randomly Redirect</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,10 @@
         h1 {
             color: #007BFF;
         }
-        a {
+        .link-container {
+            margin: 20px 0;
+        }
+        .link {
             display: inline-block;
             margin: 10px 0;
             text-decoration: none;
@@ -25,59 +28,68 @@
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
         }
-        a:hover {
+        .link:hover {
             background-color: #007BFF;
             color: white;
         }
-        #countdown {
-            font-size: 24px;
-            margin: 20px 0;
-            color: #FF4500;
-        }
-        #message {
-            font-size: 18px;
-            margin: 20px 0;
+        .description {
+            font-size: 14px;
+            color: #555;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the <b>Janvi Dreamer</b> Random Redirect Page</h1>
-    <p id="message">You will be redirected to a random page in <span id="countdown">3</span> seconds.</p>
+    <h1>Welcome to the <b>Janvi Dreamer</b> social links</h1>
+    <p>You are being redirected to a random page...</p>
     <p>If you are not redirected automatically, please choose one of the links below:</p>
-    <div id="links"></div>
+    <div id="links" class="link-container"></div>
 
     <script>
         const urls = [
-            "https://knarlix.github.io/Dreamer",
-            "https://www.youtube.com/channel/UCa4-5c2gCYxqummRhmh6V4Q",
-            "https://www.instagram.com/janvi_dreamer",
-            "https://discord.gg/JanviDreamer"
+            {
+                url: "https://knarlix.github.io/Dreamer",
+                name: "Dreamer",
+                description: "Visit the Dreamer website."
+            },
+            {
+                url: "https://www.youtube.com/channel/UCa4-5c2gCYxqummRhmh6V4Q",
+                name: "YouTube Channel",
+                description: "Check out our YouTube channel."
+            },
+            {
+                url: "https://www.instagram.com/janvi_dreamer",
+                name: "Instagram",
+                description: "Follow us on Instagram."
+            },
+            {
+                url: "https://discord.gg/JanviDreamer",
+                name: "Discord Server",
+                description: "Join our Discord community."
+            }
         ];
 
         // Randomly select a URL
         const randomIndex = Math.floor(Math.random() * urls.length);
-        const selectedUrl = urls[randomIndex];
+        const selectedUrl = urls[randomIndex].url;
 
-        // Countdown timer
-        let countdown = 3;
-        const countdownElement = document.getElementById('countdown');
-        const countdownInterval = setInterval(() => {
-            countdown--;
-            countdownElement.innerText = countdown;
-            if (countdown <= 0) {
-                clearInterval(countdownInterval);
-                window.location.href = selectedUrl;
-            }
-        }, 1000);
+        // Redirect immediately
+        
 
-        // Display links
+        // Display links with descriptions
         const linksDiv = document.getElementById('links');
-        urls.forEach(url => {
+        urls.forEach(item => {
             const link = document.createElement('a');
-            link.href = url;
+            link.href = item.url;
             link.target = "_blank"; // Open in new tab
-            link.innerText = url;
+            link.className = 'link';
+            link.innerText = item.name;
+
+            const description = document.createElement('div');
+            description.className = 'description';
+            description.innerText = item.description;
+
             linksDiv.appendChild(link);
+            linksDiv.appendChild(description);
         });
     </script>
 </body>
