@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Redirect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Random Redirect Page</h1>
+    <p>If you are not redirected automatically, please choose one of the links below:</p>
+    <div id="links"></div>
 
+    <script>
+        const urls = [
+            "https://knarlix.github.io/Dreamer",
+            "https://www.youtube.com/channel/UCa4-5c2gCYxqummRhmh6V4Q",
+            "https://www.instagram.com/janvi_dreamer",
+            "https://discord.gg/JanviDreamer"
+        ];
+
+        // Randomly select a URL
+        const randomIndex = Math.floor(Math.random() * urls.length);
+        const selectedUrl = urls[randomIndex];
+
+        // Redirect after 3 seconds
+        setTimeout(() => {
+            window.location.href = selectedUrl;
+        }, 3000);
+
+        // Display links
+        const linksDiv = document.getElementById('links');
+        urls.forEach(url => {
+            const link = document.createElement('a');
+            link.href = url;
+            link.target = "_blank"; // Open in new tab
+            link.innerText = url;
+            linksDiv.appendChild(link);
+        });
+    </script>
+</body>
+</html>
