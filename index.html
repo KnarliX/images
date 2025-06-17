@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to knarlix.github.io</title>
+    
+    <!-- HTML redirect (fallback method) -->
+    <meta http-equiv="refresh" content="2; URL=https://knarlix.github.io/">
+    
+    <!-- JavaScript immediate redirect -->
+    <script>
+        // Execute redirect as soon as possible
+        window.location.replace("https://knarlix.github.io/");
+    </script>
+    
+    <style>
+        /* Basic styling for the brief moment before redirection */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: center;
+            padding-top: 50px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .redirect-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
+        .loader {
+            margin: 20px auto;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #1a73e8;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-container">
+        <h1>Redirecting</h1>
+        <p>You are being redirected to knarlix.github.io</p>
+        <div class="loader"></div>
+        <p>If you are not redirected automatically, <a href="https://knarlix.github.io/">click here</a>.</p>
+    </div>
+</body>
+</html>
